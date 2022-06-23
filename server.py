@@ -6,11 +6,10 @@ output_midi_save_path = os.environ.get("OUTPUT_MIDI_SAVE_PATH")
 
 app = Flask(__name__)
 
-@app.route('/chord/', methods=["GET"])
+@app.route('/chord', methods=["GET"])
 def chord() -> str:
     request_params = request.args.to_dict()
     wav_path: str = request_params["wavPath"]
-
 
 
 
