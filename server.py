@@ -1,4 +1,6 @@
 from flask import app, Flask, request,  jsonify
+from services.ChordRetrievalService import ChordRetrievalService
+
 import os
 
 listen_port = os.environ.get("SERVER_PORT")
@@ -11,6 +13,16 @@ def chord() -> str:
     request_params = request.args.to_dict()
     wav_path: str = request_params["wavPath"]
 
+    retrieval_service = ChordRetrievalService(wav_path)
+    
+    csv_path, midi_path = retrieval_service.start_retrieval()
+
+    response = {
+        'csv_path': csv_path,
+        'midi_path': midi_path
+    }
+    
+    return jsonify(response)
 
 
 if __name__ == "__main__":
