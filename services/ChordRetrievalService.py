@@ -23,13 +23,8 @@ class ChordRetrievalService:
         mid_output_path = os.path.join("/output", video_id, "accompaniment.mid")
         csv_output_path = os.path.join("/output", video_id, "accompaniment.csv")
 
-
-        # 추후에 두 로직을 통합하는 코드 작성해야 함
-        # make midi
+        # make midi and csv
         os.system(f"omnizart chord transcribe -o {mid_output_path}")
-
-        # make csvxs
-        os.system(f"omnizart chord transcribe -o {csv_output_path}")
         # wav 데이터    
 
         print(f"Chord retrieval end in {time.time() - retrieval_start_time}s")
