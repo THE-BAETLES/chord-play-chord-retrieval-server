@@ -1,11 +1,12 @@
 import os
 import time
 from typing import Tuple
-
+import shutil
 class ChordRetrievalService:
     def __init__(self, wav_path: str,output_base_path: str) -> None:
         self.wav_path = wav_path
         self.output_base_path = output_base_path
+        os.makedirs(output_base_path)
 
     def start_retrieval(self) -> Tuple[str, str]:
         """
@@ -19,8 +20,10 @@ class ChordRetrievalService:
         retrieval_start_time = time.time()
         video_id = self.wav_path.split('/')[-2]
 
-        mid_output_path = os.path.join(self.output_base_path, video_id, "accompaniment.mid")
-        csv_output_path = os.path.join(self.output_base_path, video_id, "accompaniment.csv")
+        save_path = os.path.join(self.output_base_path, video_id)
+
+        mid_output_path = os.path.join(save_path, "accompaniment.mid")
+        csv_output_path = os.path.join(save_path, "accompaniment.csv")
 
         # make midi and csv
         os.system(f"omnizart chord transcribe -o {mid_output_path} {self.wav_path}")
