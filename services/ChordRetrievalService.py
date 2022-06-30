@@ -6,7 +6,7 @@ class ChordRetrievalService:
     def __init__(self, wav_path: str,output_base_path: str) -> None:
         self.wav_path = wav_path
         self.output_base_path = output_base_path
-        os.makedirs(output_base_path)
+        os.makedirs(output_base_path, exist_ok=True)
 
     def start_retrieval(self) -> Tuple[str, str]:
         """
