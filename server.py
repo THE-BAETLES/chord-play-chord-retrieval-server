@@ -21,8 +21,8 @@ def chord() -> str:
     csv_path, midi_path = retrieval_service.start_retrieval()
 
     response = {
-        'csv_path': csv_path,
-        'midi_path': midi_path
+        'csvPath': csv_path,
+        'midiPath': midi_path
     }
     
     return jsonify(response)
