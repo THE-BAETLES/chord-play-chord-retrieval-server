@@ -6,6 +6,13 @@ class ChordRetrievalService:
         self.wav_path = wav_path
         self.output_base_path = output_base_path
 
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        if os.path.exists(self.wav_path):
+            os.remove(self.wav_path)
+
     def start_retrieval(self) -> Tuple[str, str]:
         """
         wav_path = "/input/video_id/B.wav

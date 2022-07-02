@@ -16,9 +16,8 @@ def chord() -> str:
     request_params = request.args.to_dict()
     wav_path: str = request_params["wavPath"]
 
-    retrieval_service = ChordRetrievalService(wav_path, output_midi_save_path)
-    
-    midi_path, csv_path = retrieval_service.start_retrieval()
+    with ChordRetrievalService(wav_path, output_midi_save_path) as chordRet:
+        midi_path, csv_path = chordRet.start_retrieval()
 
     response = {
         'csvPath': csv_path,
