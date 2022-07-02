@@ -1,7 +1,6 @@
 import os
 import time
 from typing import Tuple
-import shutil
 class ChordRetrievalService:
     def __init__(self, wav_path: str,output_base_path: str) -> None:
         self.wav_path = wav_path
