@@ -26,7 +26,6 @@ def chord() -> str:
     
     return jsonify(response)
 
-
 if __name__ == "__main__":
-    print(f"[Chord Retrieval Engine Server] start listen on {listen_port}")
-    app.run(host='0.0.0.0', port=listen_port)
+    print(f"[Chord Retrieval Engine Server] start listen on {1202}")
+    app.run(host='0.0.0.0', port=1202)
