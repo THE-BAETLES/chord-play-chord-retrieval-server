@@ -4,7 +4,6 @@ from fastapi import FastAPI
 import os
 
 dotenv.load_dotenv()
-
 listen_port = os.environ.get("SERVER_PORT")
 output_midi_save_path = os.environ.get("OUTPUT_MIDI_SAVE_PATH")
 
@@ -21,6 +20,7 @@ async def chord(wavPath: str) -> str:
         'csvPath': csv_path,
         'midiPath': midi_path
     }
+    
     return response
 
 if __name__ == "__main__":
